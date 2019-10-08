@@ -35,38 +35,30 @@ def increase_brightness(img, value):
 
 
 def face_recog(known_face, unknown_face):
-    # known_image = face_recognition.load_image_file(known_face)
-    known_image = known_face
-    # unknown_image = face_recognition.load_image_file(unknown_face)
-    unknown_image = unknown_face
-
-    known_encoded = face_recognition.face_encodings(known_image)[0]
-    unknown_encoded = face_recognition.face_encodings(unknown_image)[0]
+    
+    known_encoded = face_recognition.face_encodings(known_face)[0]
+    unknown_encoded = face_recognition.face_encodings(unknown_face)[0]
     results = face_recognition.compare_faces([known_encoded], unknown_encoded,tolerance=0.54)
     return results
 
 
-if __name__ == '__main__':
-    card_image = cv2.imread("face_images/hira_pass.jpg")
-    cv2.imshow("card_image",imutils.resize(card_image,width=600))
-    cv2.waitKey()
-    # cv2.destroyAllWindows()
+def main(images):
+    image1 = imutils.resize(images[0],width=600)
+    face1 = face_detection(image1)
 
-    face1 = face_detection(card_image)
-    cv2.imshow("Face1", face1)
-    cv2.waitKey()
-
-    selfie_image = "face_images/aw2.jpeg"
-    face2 = cv2.imread(selfie_image)
-    face2 = face_detection(face2)
-    cv2.imshow("Face2", face2)
-    cv2.waitKey()
+    image2 = imutils.resize(images[1], width=600)
+    face2 = face_detection(image2)
 
     # comparing both faces using face_recognition API. . .
 
     result = face_recog(face1, face2)
-
-    if result == [True] :
-        print("Both are same persons")
+    if result == [True]:
+        return ("Both are same persons")
     else:
-        print("Both are different persons")
+        return ("Both are different persons")
+
+
+#
+#
+# if __name__ == '__main__':
+#     main()
