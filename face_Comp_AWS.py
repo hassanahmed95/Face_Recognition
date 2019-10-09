@@ -6,7 +6,7 @@ import boto3
 # the credientials and config file of AWS are placed at the following
 # path .aws/credientials and .aws/config at the root folder of the
 # system . ..
-# hy
+# hy #hy
 if __name__ == "__main__":
     sourceFile = "face_images/aw.jpg"
     targetFile = "face_images/aw2.jpeg"
