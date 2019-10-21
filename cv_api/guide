@@ -1,43 +1,9 @@
-curl -X POST -F image="{\"images\":[\"hira.jpg\",\"h.jpg\"]}" 'http://localhost:8000/digi_face/detect/'
+# That command will be used to uplaod two images on the server for the face comparison.
+# the result will be in the form of Json object, which will be our end point and will be used in the 
+# mobile application for face comparison....
+
+curl -X POST -F image="{\"images\":[\"image1.jpg\",\"image2.jpg\"]}" 'http://localhost:8000/digi_face/detect/'
 
 
-
-
-
-
-
-
-
-
-curl -X POST -F image="{\"images\":[\"hira.jpg\",\"h.jpg\"]}" 'http://localhost:8000/digi_ocr/detect/'
-
-
--> print("The post request couldnt send")
-(Pdb) X=request.POST.get("images")
-(Pdb) print(X)
-None
-(Pdb) X=request.POST.get("image")
-(Pdb) print(X)
-{"images":["hira.jpg","h.jpg"]}
-(Pdb) import json
-(Pdb) json.loads(X)
-{'images': ['hira.jpg', 'h.jpg']}
-(Pdb) X=json.loads(X)
-(Pdb) X["image"]
-*** KeyError: 'image'
-(Pdb) X["images"]
-['hira.jpg', 'h.jpg']
-(Pdb) X["images"][0]
-'hira.jpg'
-(Pdb) X["images"][1]
-'h.jpg'
-(Pdb) /home/hassan/Hassaan_Home/My_Python_Projects/Digi_Face_Recog/cv_api/digi_ocr/views.py changed, reloading.
-Watching for file changes with StatReloader
-
-
-[8/23 2:41 PM] Janshair Khan
-    
-
-curl -X POST -F image=@qq.jpg 'http://172.21.200.181:8000/digi_ocr/detect/'
 
 
