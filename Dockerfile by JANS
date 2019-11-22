@@ -1,0 +1,9 @@
+FROM ubuntu:latest
+
+WORKDIR /app
+
+COPY requirement.txt /app
+
+RUN apt-get update && apt-get install python3-pip cmake libsm6 libxext6 libxrender-dev -y && pip3 install -r requirement.txt
+
+COPY cv_api/ /app
